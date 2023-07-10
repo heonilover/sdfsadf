@@ -13,7 +13,7 @@ app.listen(80);
 app.get('/', async function(req, res){
     const title=req.params.title
     const content=req.params.content
-    res.json(await model.find({title, content}));
+    res.json(await model.find({}));
 });
 
 app.get('/put', async function(req, res){
