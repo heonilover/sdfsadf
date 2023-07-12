@@ -11,11 +11,11 @@ mongoose.connect("mongodb://127.0.0.1:27017");
 app.listen(80);
 
 app.get('/', async function(req, res){
-    const title=req.params.title
-    const content=req.params.content
-    res.json(await model.find({}, {_id:0, __v:0}));
+    new model({title: req.query.title, content: req.query.content}).save();
 });
 
 app.get('/put', async function(req, res){
-    new model({title: req.query.title, content: req.query.content}).save();
+    const title=req.params.title
+    const content=req.params.content
+    res.json(await model.find({}, {_id:0, __v:0}));
 });
